@@ -1,0 +1,30 @@
+#!/bin/bash
+red='\033[0;31m'
+green='\033[1;32m'
+NC='\033[0m' # No Color
+
+LONG=0
+
+while getopts "l" opt; do
+    case "$opt" in
+    l)  LONG=1
+        ;;
+    esac
+done
+
+locate -br '\.git$' | rev | cut -c 5- | rev | while IFS= read -r line ; do
+    echo -n "$line "
+
+    BRANCH="$(git --git-dir="$line.git" --work-tree="$line" branch | grep \* | cut -c 3-)"
+    STATUS="$(git --git-dir="$line.git" --work-tree="$line" status -s)"
+        if [ "$STATUS" != "" ];
+        then
+            echo -e "${red}$BRANCH *${NC}"
+            if [ "$LONG" = "1" ];
+            then
+                git --git-dir="$line.git" --work-tree="$line" status -s
+            fi
+        else
+            echo -e "${green}$BRANCH${NC}"
+        fi
+done
