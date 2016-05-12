@@ -36,15 +36,17 @@ else
     exit $?;
 fi
 
-count=`ls -1 *.bib 2>/dev/null | wc -l`
-if [ $count != 0 ]; then
-    cp *.bib build
-    cd build
-    bibtex $NAME
-    if [ $? -eq 0 ]; then echo OK; else echo FAIL; exit $?; fi
-    cd ..
-fi
+if  [ `grep -c 'citation' build/$NAME.aux` -eq 1 ] && [ `grep -c 'bibdata' build/$NAME.aux` -eq 1 ]; then
 
+    count=`ls -1 *.bib 2>/dev/null | wc -l`
+    if [ $count != 0 ]; then
+        cp *.bib build
+        cd build
+        bibtex $NAME
+        if [ $? -eq 0 ]; then echo OK; else echo FAIL; exit $?; fi
+        cd ..
+    fi
+fi
 
 pdflatex -interaction=nonstopmode -output-directory build/ $NAME.tex > build/build.log
 if [ $? -eq 0 ]; then
