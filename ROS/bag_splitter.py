@@ -1,5 +1,8 @@
+# ---
+# Author: Tomasz Kucner
+# Description: A python script that splits ros-bag files into even sised parts. NOTE! reindex each part afterwards http://wiki.ros.org/rosbag/Commandline#reindex
 # Usage: python bag_splitter.py bag_file size_of_chunk_in_MB
-# NOTE! reindex each part afterwards http://wiki.ros.org/rosbag/Commandline#reindex
+# ---
 import sys
 import os
 import rosbag

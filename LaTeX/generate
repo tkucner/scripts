@@ -1,3 +1,8 @@
+# --
+# Author: Tomasz Kucner
+# Description: (LEGACY - instead use latexmk) A script that compiles multifile latex documents and assures clean workspace.
+# --
+
 #!/bin/bash
 
 for NAME in "$@"

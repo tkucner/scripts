@@ -1,3 +1,8 @@
+# ---
+# Author: Tomasz Kucner
+# Description:Script that looks for all git repositories in the system and then list them including their current branch and status.
+# ---
+
 #!/bin/bash
 red='\033[0;31m'
 green='\033[1;32m'

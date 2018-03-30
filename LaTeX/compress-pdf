@@ -1,3 +1,8 @@
+# ---
+# Author: Federico Pecora
+# Description: Script that minimizes the size of pdf document.
+# ---
+
 #!/bin/sh
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$1-compressed $1
 mv $1-compressed $1
