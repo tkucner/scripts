@@ -9,3 +9,6 @@ git:
 
 ROS:
 - bag_splitter - A python script that splits ros-bag files into even sised parts. NOTE! reindex each part afterwards http://wiki.ros.org/rosbag/Commandline#reindex
+
+bash:
+- autocompile.sh - A bash script that automatically detects if a source file has changed in order to run compilation code. Originally designed to work with Asymptote.
